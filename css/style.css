@@ -1,0 +1,47 @@
+:root {
+  --ink: #12202f;
+  --ink-2: #1b2e44;
+  --paper: #eef1f4;
+  --line: #3b5877;
+  --signal: #ff7a2f;
+  --font: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--ink); color: var(--paper); font: 14px/1.4 var(--font); overflow: hidden; }
+#app { position: fixed; inset: 0; }
+#app canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+
+.bar {
+  position: fixed; top: 12px; left: 12px; right: 12px; display: flex; gap: 16px;
+  align-items: center; justify-content: space-between; flex-wrap: wrap; pointer-events: none;
+}
+.bar > * { pointer-events: auto; }
+.bar h1 { margin: 0; font-size: 17px; font-weight: 600; letter-spacing: .01em; }
+.ratio { margin-left: 6px; padding: 1px 8px; border: 1px solid var(--signal); color: var(--signal); border-radius: 3px; font-weight: 600; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+button {
+  font: inherit; color: var(--paper); background: rgba(18, 32, 47, .82); border: 1px solid var(--line);
+  padding: 8px 14px; border-radius: 4px; cursor: pointer; backdrop-filter: blur(6px);
+}
+button:hover:not(:disabled) { border-color: var(--paper); }
+button:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+button.primary { background: var(--signal); border-color: var(--signal); color: #1a0e05; font-weight: 600; }
+
+#debug {
+  position: fixed; left: 12px; bottom: 12px; width: min(300px, calc(100vw - 24px));
+  background: rgba(18, 32, 47, .84); border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px;
+  backdrop-filter: blur(6px);
+}
+#debug dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; }
+#debug dt { color: #9fb4c9; }
+#debug dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.legend { margin: 8px 0 0; padding-top: 8px; border-top: 1px solid var(--line); color: #9fb4c9; font-size: 12px; }
+
+#cam-preview { position: fixed; right: 12px; bottom: 12px; width: min(320px, 44vw); aspect-ratio: 4 / 3; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: #000; transform: scaleX(-1); }
+#cam-preview[hidden] { display: none; }
+#cam-preview video, #cam-preview canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+#toast { position: fixed; top: 64px; left: 50%; transform: translateX(-50%); max-width: min(520px, 92vw); padding: 10px 16px; border-radius: 4px; background: var(--ink-2); border: 1px solid var(--signal); }
+#toast[hidden] { display: none; }

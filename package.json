@@ -1,0 +1,8 @@
+{
+  "name": "webxr-quest3-hand-locomotion",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Hand-tracking WebXR locomotion, 1:70 architectural scale. Only used for running unit tests; the site itself needs no build.",
+  "scripts": { "test": "node --test tests/*.test.mjs" }
+}
