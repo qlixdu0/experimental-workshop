@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maket içinde yürü – 1:70 WebXR</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+      "@mediapipe/tasks-vision": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/vision_bundle.mjs"
+    }
+  }
+  </script>
+</head>
+<body>
+  <main id="app"></main>
+
+  <header class="bar">
+    <h1>Maket içinde yürü <span class="ratio">1:70</span></h1>
+    <div class="actions">
+      <button id="btn-vr" class="primary" disabled>Enter VR</button>
+      <button id="btn-cam-start">Start Camera</button>
+      <button id="btn-cam-stop" disabled>Stop Camera</button>
+      <button id="btn-reset">Reset Position</button>
+    </div>
+  </header>
+
+  <aside id="debug" aria-label="Hata ayıklama paneli">
+    <dl>
+      <dt>XR oturumu</dt><dd id="dbg-xr">—</dd>
+      <dt>El takibi</dt><dd id="dbg-hand">—</dd>
+      <dt>Aktif el</dt><dd id="dbg-active">—</dd>
+      <dt>Aktif pinch</dt><dd id="dbg-pinch">—</dd>
+      <dt>İleri hız</dt><dd id="dbg-walk">0</dd>
+      <dt>Dönüş hızı</dt><dd id="dbg-turn">0</dd>
+      <dt>Ölçek oranı</dt><dd id="dbg-scale">1:70</dd>
+      <dt>FPS</dt><dd id="dbg-fps">—</dd>
+    </dl>
+    <p class="legend">
+      işaret + başparmak: ileri · serçe + başparmak: sağa dön · yüzük + başparmak: sola dön
+    </p>
+  </aside>
+
+  <div id="cam-preview" hidden>
+    <video id="cam-video" playsinline muted></video>
+    <canvas id="cam-overlay"></canvas>
+  </div>
+
+  <div id="toast" role="status" hidden></div>
+  <noscript>Bu sayfa JavaScript gerektirir.</noscript>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
